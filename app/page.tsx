@@ -71,7 +71,7 @@ export default function Home() {
                 <span
                 onClick={() => toggleTodo(index)}
                 className={`flex-1 cursor-pointer ${todo.completed ? "line-through text-gray-400" : ""}`}
-                >{todo.text}
+                >{todo.input}
                  </span>
                 <button
                 onClick={() => removeTodo(index)}
