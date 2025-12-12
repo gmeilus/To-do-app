@@ -3,19 +3,23 @@
 import { useState } from "react";
 import { text } from "stream/consumers";
 
+type Todo = {
+  input: string;
+  completed: boolean;
+}
+
 export default function Home() {
-  const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState("");
-  const removeTodo = (index) => {setTodos(todos.filter((_,i) => i !==index))};
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [input, setInput] = useState<string>("");
+  const removeTodo = (index: number ) => {setTodos(todos.filter((_,i) => i !==index))};
 
   const addTodo = (e) => {
     e.preventDefault(); // prevent page reload
     if (!input) return;              // skip empty input
-    setTodos([...todos, {text: input, completed: false}]);     // add to list
+    setTodos([...todos, {input, completed: false}]);     // add to list
     setInput("");                    // clear input
   };
-
-  const toggleTodo = (index) => {
+  const toggleTodo = (index: number) => {
     setTodos(
       todos.map((todo, i) =>
         i === index ? { ...todo, completed: !todo.completed } :todo
