@@ -13,7 +13,7 @@ export default function Home() {
   const [input, setInput] = useState<string>("");
   const removeTodo = (index: number ) => {setTodos(todos.filter((_,i) => i !==index))};
 
-  const addTodo = (e) => {
+  const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // prevent page reload
     if (!input) return;              // skip empty input
     setTodos([...todos, {input, completed: false}]);     // add to list
